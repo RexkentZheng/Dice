@@ -1,0 +1,147 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.frame {
+	width: 900px;
+	height: 750px;
+	background-color: lightcoral;
+	border: 2px solid darkgray;
+	margin: 20px auto 0;
+	position: relative;
+}
+.ball {
+	width: 50px;
+	height: 50px;
+	background-color: darkolivegreen;
+	border-radius: 50%;
+	position: relative;
+	top: 20px;
+	left: 425px;
+}
+button{
+	width: 100px;
+	height: 50px;
+	border-radius: 5px;
+	margin: 10px auto 0;
+	display: block;
+	
+}
+.box{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	position: absolute;
+	background-color: darkslategray;
+}
+.top{
+	top: 20px;
+	left: 425px;
+}
+.line{
+	width: 50px;
+	border-radius: 30px;
+	background-color:  #2F4F4F;
+	position: absolute;
+}
+
+.first-floor{
+	height: 100px;	
+	top: 70px;
+	left: 425px;
+}
+.lean{
+	height: 253px;
+}
+.lean-s{
+	height: 185px;
+}
+.turn-left{
+	transform: rotate(63.5deg);
+}
+.turn-left-b{
+	transform: rotate(51.5deg);
+}
+.turn-right-b{
+	transform: rotate(-51.5deg);
+}
+.turn-right{
+	transform: rotate(-63.5deg);
+}
+.second-floor{
+	top: 61px;
+}
+.second-floor-1{
+	left: 340px;
+}
+.second-floor-2{
+	left: 510px;
+}
+.third-floor{
+	height: 150px;	
+	top: 210px;
+}
+.third-floor-1{
+	left: 245px;
+}
+.third-floor-2{
+	left: 605px;
+}
+.fourth-floor{
+	top: 288px;
+}
+.fourth-floor-1{
+	left: 191px;
+}
+.fourth-floor-2{
+	left: 301px;
+}
+.fourth-floor-3{
+	left: 551px;
+}
+.fourth-floor-4{
+	left: 661px;
+}
+.fifth-floor{
+	height: 190px;
+	top: 400px;
+}
+.fifth-floor-1{
+	left: 135px;
+}
+.fifth-floor-2{
+	left: 354.5px;
+}
+.fifth-floor-3{
+	left: 495px;
+}
+.fifth-floor-4{
+	left: 715px;
+}
+.person{
+	width: 150px;
+	height: 150px;
+	position: absolute;
+	top: 570px;
+	text-align: center;
+}
+.person img{
+	width: 100px;
+	height: 100px;
+	margin: 0 auto;
+	border-radius: 10px;
+}
+.person1{
+	left: 85px;
+}
+.person2{
+	left: 303px;
+}
+.person3{
+	left: 445px;
+}
+.person4{
+	left: 665px;
+}
