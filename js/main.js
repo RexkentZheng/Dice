@@ -1,6 +1,6 @@
 //小球加速运动
 $.extend(jQuery.easing, {
-	easeIn: function(x, t, b, c, d) { 
+	easeIn: function (x, t, b, c, d) {
 		return c * (t /= d) * t + b;
 	},
 });
@@ -12,12 +12,12 @@ var x = '',
 	time = 1000,
 	ball = $('.ball');
 
-//产生随机数，改善算法，是几率更加均衡
+//产生随机数，改善算法，使几率更加均衡
 function getOnePart() {
-	if(Math.floor(Math.random()*10) > 4) {
+	if (Math.floor(Math.random() * 10) > 4) {
 		x += 'R';
 	} else {
-		x += 'L';  	  
+		x += 'L';
 	}
 }
 //获取最终的人物标识
@@ -25,11 +25,12 @@ function getCharacter() {
 	x = '';
 	getOnePart();
 	getOnePart();
+	console.log(x);
 }
 //判断人物标识是否正确，不正确重新获取
 function getRightCharacter() {
 	getCharacter();
-	if(choosen.indexOf(x) !== -1) {
+	if (choosen.indexOf(x) !== -1) {
 		getRightCharacter();
 	} else {
 		return
@@ -53,7 +54,7 @@ function goLean() {
 }
 //判断小球运动方向
 function judegDri(dri) {
-	if(dri === 'L') {
+	if (dri === 'L') {
 		rotateX = -rotateX;
 		goLean();
 		rotateX = -rotateX;
@@ -87,12 +88,24 @@ function reset() {
 	rotateX = 180;
 	time = 1000;
 	removeBounce();
+	clearTimeout(x);
+}
+//修改蒙层内容并且展示
+function showShade() {
+	var dom = $('[value='+x+']').parent().parent();
+	$('.content img').attr('src',''+dom.find('img').attr('src')+'');
+	$('.content p span').text(''+dom.find('span').text()+'')
+	x = setTimeout(function(){
+		$('.shade').show().addClass('animated zoomIn');
+	},3900)
+	
 }
 //小球滚动过程
 function runBall() {
 	var lastPosition = x.split('');
 	reset();
 	//第一次向下
+	showShade();
 	goDown();
 	//第一次倾斜
 	judegDri(lastPosition[0]);
@@ -108,7 +121,7 @@ function runBall() {
 //获取选中的被选中的人
 function getChoosen() {
 	choosen = [];
-	$.each($('input:checkbox:checked'), function() {
+	$.each($('input:checkbox:checked'), function () {
 		choosen.push($(this).val())
 	});
 }
@@ -120,7 +133,7 @@ function runProcess() {
 }
 //判断小球是否处于初始位置，不是就清除运动过程并且重置到初始位置
 function startRun() {
-	if(ball.offset().left !== 724 && ball.offset().top !== 42) {
+	if (ball.offset().left !== 724 && ball.offset().top !== 42) {
 		ball.stop(true);
 		reset();
 		runProcess();
@@ -128,13 +141,22 @@ function startRun() {
 		runProcess();
 	}
 }
-//绑定按钮事件
-$('button').click(function() {
-	startRun();
+//检测蒙层显示状态
+function checkShade(){
+	let shadeStatus = $('.shade').css('display');
+	if (shadeStatus === 'block') {
+		$('.shade').hide().removeClass('animated zoomIn');
+	}
+}
+//点击蒙层消失事件
+$('.shade').on('click',function(){
+	$('.shade').hide().removeClass('animated zoomIn');
+	reset();
 })
 //绑定回车开始事件
-$(document).keydown(function(event) {
-	if(event.keyCode === 13) {
-		startRun(); 
+$(document).keydown(function (event) {
+	if (event.keyCode === 13) {
+		checkShade();
+		startRun();
 	}
 })
